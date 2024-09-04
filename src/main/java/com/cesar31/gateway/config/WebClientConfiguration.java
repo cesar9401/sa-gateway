@@ -30,6 +30,26 @@ public class WebClientConfiguration {
                                 .uri("lb://sa-organization")
 
                 )
+                .route(
+                        "sa-root",
+                        r -> r.path("/api/sa-root/public/**")
+                                .uri("lb://sa-root")
+                )
+                .route(
+                        "sa-root",
+                        r -> r.path("/api/sa-root/auth/**")
+                                .uri("lb://sa-root")
+                )
+                .route(
+                        "sa-root",
+                        r -> r.path("/api/sa-root/clients/**")
+                                .uri("lb://sa-root")
+                )
+                .route(
+                        "sa-root",
+                        r -> r.path("/api/sa-root/employees/**")
+                                .uri("lb://sa-root")
+                )
                 .build();
     }
 }
