@@ -28,7 +28,11 @@ public class WebClientConfiguration {
                         "sa-organization",
                         r -> r.path("/api/sa-organization/organizations/**")
                                 .uri("lb://sa-organization")
-
+                )
+                .route(
+                        "sa-organization",
+                        r -> r.path("/api/sa-organization/categories/**")
+                                .uri("lb://sa-organization")
                 )
                 .route(
                         "sa-root",
