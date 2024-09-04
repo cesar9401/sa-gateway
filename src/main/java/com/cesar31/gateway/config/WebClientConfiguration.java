@@ -28,6 +28,7 @@ public class WebClientConfiguration {
         return builder.routes()
                 .route("sa-root", r -> r.path("/api/sa-root/auth/**").uri("lb://sa-root"))
                 .route("sa-root", r -> r.path("/api/sa-root/public/**").uri("lb://sa-root"))
+                .route("sa-root", r -> r.path("/api/sa-root/roles/**").filters(f -> f.filter(authenticationFilter)).uri("lb://sa-root"))
                 .route("sa-root", r -> r.path("/api/sa-root/clients/**").filters(f -> f.filter(authenticationFilter)).uri("lb://sa-root"))
                 .route("sa-root", r -> r.path("/api/sa-root/employees/**").filters(f -> f.filter(authenticationFilter)).uri("lb://sa-root"))
                 .route("sa-organization", r -> r.path("/api/sa-organization/public/**").uri("lb://sa-organization"))
