@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: sa-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+  webflux:
+    base-path: /api/ear
