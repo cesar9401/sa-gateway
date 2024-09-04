@@ -6,5 +6,3 @@ spring:
       discovery:
         locator:
           enabled: true
-  webflux:
-    base-path: /api/ear
