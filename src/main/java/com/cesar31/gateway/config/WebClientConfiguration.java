@@ -26,14 +26,20 @@ public class WebClientConfiguration {
     @Bean
     public RouteLocator routeLocator(RouteLocatorBuilder builder) {
         return builder.routes()
+                /* sa-root */
                 .route("sa-root", r -> r.path("/api/sa-root/auth/**").uri("lb://sa-root"))
                 .route("sa-root", r -> r.path("/api/sa-root/public/**").uri("lb://sa-root"))
                 .route("sa-root", r -> r.path("/api/sa-root/roles/**").filters(f -> f.filter(authenticationFilter)).uri("lb://sa-root"))
                 .route("sa-root", r -> r.path("/api/sa-root/clients/**").filters(f -> f.filter(authenticationFilter)).uri("lb://sa-root"))
                 .route("sa-root", r -> r.path("/api/sa-root/employees/**").filters(f -> f.filter(authenticationFilter)).uri("lb://sa-root"))
+
+                /* sa-organization */
                 .route("sa-organization", r -> r.path("/api/sa-organization/public/**").uri("lb://sa-organization"))
-                .route("sa-organization", r -> r.path("/api/sa-organization/organizations/**").filters(f -> f.filter(authenticationFilter)).uri("lb://sa-organization"))
                 .route("sa-organization", r -> r.path("/api/sa-organization/categories/**").filters(f -> f.filter(authenticationFilter)).uri("lb://sa-organization"))
+                .route("sa-organization", r -> r.path("/api/sa-organization/organizations/**").filters(f -> f.filter(authenticationFilter)).uri("lb://sa-organization"))
+                .route("sa-organization", r -> r.path("/api/sa-organization/dishes/**").filters(f -> f.filter(authenticationFilter)).uri("lb://sa-organization"))
+                .route("sa-organization", r -> r.path("/api/sa-organization/rooms/**").filters(f -> f.filter(authenticationFilter)).uri("lb://sa-organization"))
+
                 .build();
     }
 }
