@@ -40,6 +40,11 @@ public class WebClientConfiguration {
                 .route("sa-organization", r -> r.path("/api/sa-organization/dishes/**").filters(f -> f.filter(authenticationFilter)).uri("lb://sa-organization"))
                 .route("sa-organization", r -> r.path("/api/sa-organization/rooms/**").filters(f -> f.filter(authenticationFilter)).uri("lb://sa-organization"))
 
+                /* sa-transaction-service */
+                .route("sa-transaction-service", r -> r.path("/api/sa-transaction-service/public/**").uri("lb://sa-transaction-service"))
+                .route("sa-transaction-service", r -> r.path("/api/sa-transaction-service/categories/**").filters(f -> f.filter(authenticationFilter)).uri("lb://sa-transaction-service"))
+                .route("sa-transaction-service", r -> r.path("/api/sa-transaction-service/sales/**").filters(f -> f.filter(authenticationFilter)).uri("lb://sa-transaction-service"))
+
                 .build();
     }
 }
