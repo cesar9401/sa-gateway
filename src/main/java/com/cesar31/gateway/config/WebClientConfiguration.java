@@ -44,6 +44,7 @@ public class WebClientConfiguration {
                 .route("sa-transaction-service", r -> r.path("/api/sa-transaction-service/public/**").uri("lb://sa-transaction-service"))
                 .route("sa-transaction-service", r -> r.path("/api/sa-transaction-service/categories/**").filters(f -> f.filter(authenticationFilter)).uri("lb://sa-transaction-service"))
                 .route("sa-transaction-service", r -> r.path("/api/sa-transaction-service/sales/**").filters(f -> f.filter(authenticationFilter)).uri("lb://sa-transaction-service"))
+                .route("sa-transaction-service", r -> r.path("/api/sa-transaction-service/export/**").filters(f -> f.filter(authenticationFilter)).uri("lb://sa-transaction-service"))
 
                 .build();
     }
